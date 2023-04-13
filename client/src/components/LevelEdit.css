@@ -1,0 +1,49 @@
+.mainpic {
+    border: 1px solid gray;
+}
+.leveledit {
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+    margin: auto;
+    /* width: 60vw; */
+}
+.mainpicdiv {
+    /* width : 300px; */
+    display: flex;
+    flex-direction: column;
+    /* margin: auto; */
+    grid-column-start: 2;
+    grid-column-end: 9;
+    margin-bottom: 15px;
+}
+
+label {
+    display: block;
+}
+
+.main-form {
+    border: 1px solid black;
+    /* width: 60vw; */
+    display: flex;
+    flex-direction: column;
+    /* margin: auto; */
+    grid-column-start: 2;
+    grid-column-end: 9;
+    margin-bottom: 15px;
+
+}
+
+.delBtn {
+    grid-column-start: 7;
+    grid-column-end: 9;
+}
+
+.editBtn {
+    grid-column-start: 2;
+    grid-column-end: 4;
+}
+@media only screen and (max-width: 600px) {
+    .leveledit {
+        grid-template-columns: repeat(9, 1fr);
+    }
+}

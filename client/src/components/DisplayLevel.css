@@ -1,0 +1,20 @@
+@import url('https://fonts.googleapis.com/css2?family=Chivo+Mono:ital@1&display=swap');
+
+.levelDisplay {
+    background-color: black;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.levelPicture {
+    max-width: min(350px, 100vw);
+    margin-top: 20px;
+    border-radius: 5px;
+    /* margin: auto; */
+}
+
+.level-text {
+    color: gold;
+    max-width: min(350px, 100vw);
+    font-family: 'Chivo Mono', monospace;
+}
