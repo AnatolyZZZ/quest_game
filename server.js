@@ -2,6 +2,7 @@ import express  from 'express';
 import cors from 'cors';
 import dotenv from 'dotenv';
 import cookieParser from 'cookie-parser';
+import path from 'path'
 
 import {user_router} from './routes/Users.js';
 import { level_router } from './routes/Levels.js';
