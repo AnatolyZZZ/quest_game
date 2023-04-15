@@ -18,7 +18,7 @@ export const reducer = (state=initialState, action={}) => {
             localStorage.setItem("isAdmin", action.payload)
             return {...state, isAdmin : action.payload}
         case SET_LEVEL :
-            console.log('in reducer', action.payload);
+            // console.log('in reducer', action.payload);
             localStorage.setItem("playerLevel", action.payload)
             return {...state, level : action.payload}
         case SET_ID :

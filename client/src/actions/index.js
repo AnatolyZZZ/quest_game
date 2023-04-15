@@ -1,16 +1,19 @@
 export const GET_GAME = 'GET_GAME', SET_TOKEN='SET_ACCESS_TOKEN', SET_ADMIN = "SET_ADMIN", SET_LEVEL = 'SET_LEVEL', SET_ID = 'SET_ID'
 
-
-export const getGame = () => (dispatch) => {
-    fetch('/api/levels')
-    .then(res => res.json())
-    .then(data => {
+export const getGame =  () => async (dispatch) => {
+    const res = await fetch('/api/levels');
+    if (res.ok) {
+        const data = await res.json();
         dispatch({
             type: GET_GAME,
             payload : data
         })
-    })
-    .catch (error => console.log(error))
+    } else  {
+        dispatch({
+                type: GET_GAME,
+                payload : []
+        })
+    }   
 }
 
 export const setToken = (token) => {

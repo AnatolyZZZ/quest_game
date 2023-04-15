@@ -44,7 +44,7 @@ export const LevelEdit = (props) => {
             if (res.ok === true) {
                 const data = await res.json()
                 // console.log('data2 =>', data)
-                setLevel({...data[0], file : ""});
+                setLevel({...data[0], file : "", imagedeleted : false});
                 setLevelIndex(data[0].id)
                 setEdit(false);
                 // want to clear file input after submiting
@@ -82,7 +82,7 @@ export const LevelEdit = (props) => {
     }
 
     // if we discard changes have to get level from server
-    const cancelBtn = editmode ? <button className='editBtn' onClick={(e) => {
+    const cancelBtn = editmode ? <button className='discardBtn' onClick={(e) => {
         getLevel();
         setFileIndex(Date.now());
         setEdit(false);
@@ -95,21 +95,21 @@ export const LevelEdit = (props) => {
     }}>Delete level</button> : <></>
 
     const editBtn = 
-    <button type="submit">
+    <button type="submit" className="editBtn">
         {levelIndex === -1 ? 'Create new level' : editmode ? 'Save changes' : 'Edit level'}
     </button> 
 
 
     return <div className="leveledit">
     {/* { levelIndex !== -1 && (editmode  ? <p>You are edditing level N {levelIndex}</p> : <p>This is level  {levelIndex}</p>)} */}
-    {(level.photo || level.file) && (level.imagedeleted==="false") && <div className="mainpicdiv">
+    {(level.photo || level.file) && (level.imagedeleted=== false) && <div className="mainpicdiv">
     <img 
         src={level.file === '' ? '/uploads/' + level.photo : level.file}
         className="mainpic"
         alt='quest riddle'
     />
 
-    {editmode && <button onClick={(e) =>deleteImage()}>delete image</button>}
+    {editmode && <button onClick={(e) =>deleteImage()} className="delimage">delete image</button>}
     </div>}
     
     <form  
@@ -122,8 +122,9 @@ export const LevelEdit = (props) => {
         <input type='hidden' value={level.id} name='id'/>
         <input type='hidden' value={level.photo} name='photo'/>
         <input type='hidden' value={level.imagedeleted} name='imagedeleted'/>
+        
+        {editmode && <div className="form-part">
         <label htmlFor='file'>Upload image</label>
-
         <input 
             key={fileindex}
             type="file"
@@ -131,29 +132,35 @@ export const LevelEdit = (props) => {
             disabled={!editmode}
             placeholder="Add riddle image"
             accept="image/*"
-            onChange={(e) => setLevel({...level, file : URL.createObjectURL(e.target.files[0])})}/>
-        <br/>
-        <label htmlFor='description'>Level description</label>
-        <textarea name="description"
-            onChange={(e) => setLevel({...level, description : e.target.value})} 
-            value={level.description}
-            disabled={!editmode}
-            placeholder="enter riddle text"
-            autoComplete='off'
-            rows='5'>
-            {level.description}
-        </textarea>
-        <br/>
-        <label htmlFor='answers'>Answers</label>
-        <input 
-            type="text" 
-            name="answers" 
-            placeholder="enter answers separated with coma" 
-            onChange={(e) =>setLevel({...level, answers : e.target.value})} 
-            value={level.answers} 
-            disabled={!editmode}
-            autoComplete='off'
-        />
+            onChange={(e) => setLevel({...level, file : URL.createObjectURL(e.target.files[0]), imagedeleted : false})}/>
+        </div>}
+
+        <div className="form-part">
+            <label htmlFor='description'>Level description</label>
+            <textarea name="description"
+                onChange={(e) => setLevel({...level, description : e.target.value})} 
+                value={level.description}
+                disabled={!editmode}
+                placeholder="enter riddle text"
+                autoComplete='off'
+                rows='5'>
+                {level.description}
+            </textarea>
+        </div>
+        
+        <div className="form-part">
+            <label htmlFor='answers'>Answers</label>
+            <input 
+                type="text" 
+                name="answers" 
+                placeholder="enter answers separated with coma" 
+                onChange={(e) =>setLevel({...level, answers : e.target.value})} 
+                value={level.answers} 
+                disabled={!editmode}
+                autoComplete='off'
+                className="answers"
+            />
+        </div>
         {editBtn}
     </form>
 

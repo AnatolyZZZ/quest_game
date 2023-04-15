@@ -3,6 +3,7 @@ import { AnswerCheck } from "./AnswerCheck";
 import { useContext, useEffect } from "react";
 import { useSelector } from "react-redux";
 import { AppContext } from "../App";
+import { Link } from "react-router-dom";
 
 export const Player = (props) => {
     const {levelIndex, setLevelIndex, getLevel} = useContext(AppContext);
@@ -15,6 +16,7 @@ export const Player = (props) => {
     return <>
         <DisplayLevel/>
         <AnswerCheck/>
+        <Link to="/login">Relogin</Link>
     </>
    
 } 

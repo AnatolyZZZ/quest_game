@@ -37,7 +37,7 @@ export const LoginRegister = ({title}) => {
                 if (res.ok !== true) {
                     setMsg(data.msg)
                 } else {
-                    console.log(data);
+                    // console.log(data);
                     const isAdmin = admin === 'true' ? true : false
                     dispatch(setToken(data.accessToken));
                     dispatch(setAdmin(isAdmin));

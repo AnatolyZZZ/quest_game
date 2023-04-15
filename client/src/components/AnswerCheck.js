@@ -16,9 +16,9 @@ export const AnswerCheck = (props) => {
         cur_level);
     const dispatch = useDispatch();
     const levelUp = async () => {
-        console.log('levels =>', levels)
-        console.log('cur_level =>',cur_level);
-        console.log('ind=>', ind);
+        // console.log('levels =>', levels)
+        // console.log('cur_level =>',cur_level);
+        // console.log('ind=>', ind);
         const next_level = levels[ind + 1].id;
         const para = {
             method : 'PUT',
@@ -32,15 +32,15 @@ export const AnswerCheck = (props) => {
        if (res.ok === true) {
         dispatch(setPlayerLevel(next_level));
         setLevelIndex(next_level);
+        setAnswer('');
+        window.scrollTo(0,0);
        }
     }
 
     const check = (e) => {
         const arr = level.answers.split(',').map(elt => elt.trim());
-        const right = arr.filter(elt => elt===answer);
+        const right = arr.filter(elt => elt === answer.trim());
         console.log('arr =>',arr);
-        console.log('answer =>', answer )
-        console.log('right length =>',right.length);
         if (right.length === 0) {
             setMsg('Wrong. Try again');
             setTimeout(() => setMsg(''), 5000);
@@ -51,7 +51,7 @@ export const AnswerCheck = (props) => {
 
     return ind !== levels.length - 1 &&
      <div className="levelDisplay">
-        {(msg !== '') && <p className="level-text">{msg}</p>}
+        {(msg !== '') && <p className="level-text msg">{msg}</p>}
         <p className="level-text answer">Enter your answer:</p>
         <input type='text' onChange={(e) => {
             setAnswer(e.target.value);

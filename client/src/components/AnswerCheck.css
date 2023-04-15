@@ -2,7 +2,7 @@
     margin-bottom: 0px;
 }
 .answer-input {
-    height: 1.5rem;
+    height: 30px;
     font-family: 'Chivo Mono', monospace;
     margin-bottom: 5px;
 }
@@ -11,4 +11,8 @@
     margin-bottom: 25px;
     font-family: 'Chivo Mono', monospace;
     padding: 10px 25px;
+}
+.msg {
+    padding-top: 30px;
+    color : red;
 }

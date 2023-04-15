@@ -14,7 +14,7 @@ export const nullLevel = {
     photo : "",
     answers : "",
     description : "",
-    imagedeleted : "false",
+    imagedeleted : false,
     file : "",
     id : -1
 }
@@ -33,7 +33,7 @@ function App() {
           res.json()
           )
         .then(data => {
-         setLevel({...data[0], imagedeleted : "false", file : ""});
+         setLevel({...data[0], imagedeleted : false, file : ""});
         })
         .catch((error) => {
             console.error("Error:", error);
@@ -54,12 +54,13 @@ function App() {
 
   return (
     <AppContext.Provider value={{levelIndex, setLevelIndex, editmode, setEdit, level, setLevel, getLevel}}>
-      <Link to="/login">Login</Link>
-      <Link to="/register">Register</Link>
+      {/* <Link to="/login">Login</Link> */}
+      {/* <Link to="/register">Register</Link>
       <Link to="/admin">Admin</Link>
-      <Link to="/game">Player</Link>
+      <Link to="/game">Player</Link> */}
 
       <Routes>
+        <Route path='/' element={<LoginRegister title='Login'/>}/>
         <Route path='/login' element={<LoginRegister title='Login'/>}/>
         <Route path='/register' element={<LoginRegister title='Register'/>} />
         <Route path='/admin' element={<Auth><Admin/></Auth>} />

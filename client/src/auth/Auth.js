@@ -13,14 +13,13 @@ export const Auth = (props) => {
         () => {
             const verify = async () => {
             const res = await fetch('api/users/token');
-            if (res.ok !== true) {
+            if (!res.ok) {
                 navigate('/login')
             } else {
                 const data = await res.json()
                 const token = data.accessToken;
                 const decode = jwt_decode(token);
-                // set smth with useState return <Player> / <Admin> 
-                console.log(decode)
+                // console.log(decode)
                 dispatch(setToken(token));
                 dispatch(setAdmin(decode.isAdmin))
                 setRedirect(true)
