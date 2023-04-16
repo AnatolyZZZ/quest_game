@@ -131,7 +131,7 @@ export const LevelEdit = (props) => {
             name="file"
             disabled={!editmode}
             placeholder="Add riddle image"
-            accept="image/*"
+            accept="image/png, image/jpeg"
             onChange={(e) => setLevel({...level, file : URL.createObjectURL(e.target.files[0]), imagedeleted : false})}/>
         </div>}
 
