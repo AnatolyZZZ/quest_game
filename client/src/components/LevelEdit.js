@@ -106,7 +106,7 @@ export const LevelEdit = (props) => {
     <img 
         src={level.file === '' ? '/uploads/' + level.photo : level.file}
         className="mainpic"
-        alt='quest riddle'
+        alt='Once in a while, render.com deletes all new files from server, probably this happend to the picture'
     />
 
     {editmode && <button onClick={(e) =>deleteImage()} className="delimage">delete image</button>}

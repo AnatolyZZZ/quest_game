@@ -35,7 +35,7 @@ export const LoginRegister = ({title}) => {
                 const res = await fetch('/api/users/login', para);
                 const data = await res.json();
                 if (res.ok !== true) {
-                    setMsg(data.msg)
+                    setMsg(data.msg ? data.msg : "server is down, please wait for couple minutes")
                 } else {
                     // console.log(data);
                     const isAdmin = admin === 'true' ? true : false
@@ -92,7 +92,7 @@ export const LoginRegister = ({title}) => {
     <Button variant="contained" onClick={()=>handleAction(title)}>{title}</Button>
 
     <div>
-        <p>{msg}</p>
+        <p style={{color : "red"}}>{msg}</p>
     </div>
 
     <div>

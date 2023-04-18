@@ -27,7 +27,7 @@ export const _delLevel = async (req, res) => {
         const level = await deleteLevel(req.body.id);
         if (req.body.photo) {
             fs.unlink(`./uploads/${req.body.photo}`, function (err) {
-                if (err) throw err;
+                if (err) {console.log("couldn't delete");}
             });
         }
 
@@ -48,7 +48,7 @@ export const _updateLevel = async (req, res) => {
         if (req.file) {
             if (req.body.photo) {
                 fs.unlink(`./uploads/${req.body.photo}`, function (err) {
-                    if (err) throw err;
+                    if (err) {console.log("couldn't delete");}
                 });
             }
              level = await updateLevel({...req.body, photo : req.file.filename})
@@ -57,7 +57,7 @@ export const _updateLevel = async (req, res) => {
             if (req.body.imagedeleted === "true") {
 
                 fs.unlink(`./uploads/${req.body.photo}`, function (err) {
-                    if (err) throw err;
+                    if (err) {console.log("couldn't delete");};
                 }); 
                  level = await updateLevel({...req.body, photo : ""})
             } else {

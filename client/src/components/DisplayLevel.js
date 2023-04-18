@@ -13,7 +13,8 @@ export const DisplayLevel = (props) => {
            { level.photo &&  <img 
                 src={'/uploads/' + level.photo}
                 className="levelPicture"
-                alt='quest riddle'/>}
+                alt='Once in a while, render.com deletes all new files from server, probably this happend to the picture'
+                />}
             <p className="level-text">{level.description}</p>
          </div>
 
