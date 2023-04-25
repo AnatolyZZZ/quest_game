@@ -4,6 +4,7 @@ import { useContext, useEffect } from "react";
 import { useSelector } from "react-redux";
 import { AppContext } from "../App";
 import { Link } from "react-router-dom";
+import { Header } from "./Header"
 
 export const Player = (props) => {
     const {levelIndex, setLevelIndex, getLevel} = useContext(AppContext);
@@ -14,9 +15,9 @@ export const Player = (props) => {
     useEffect(()=>{
         getLevel()},[levelIndex]);
     return <>
+        <Header/>
         <DisplayLevel/>
         <AnswerCheck/>
-        <Link to="/login">Relogin</Link>
     </>
    
 } 

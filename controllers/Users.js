@@ -55,6 +55,11 @@ export const login = async (req, res) => {
     }
 }
 
+export const logout = async (req , res) => {
+    res.cookie('accessToken', '')
+    res.status(200).json({});
+}
+
 export const _changeLevel = async (req, res) => {
     const {id, new_level} = req.body;
     try {

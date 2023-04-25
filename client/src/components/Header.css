@@ -1,0 +1,45 @@
+.menu-button input {
+    appearance: none;
+    padding: 0;
+    margin: 0;
+    outline: none;
+    pointer-events: none;
+}
+
+.menu-button {
+    border: 2px solid white;
+    padding: 10px;
+    border-radius: 50%;
+    display: inline-block;
+    margin: 0px;
+    color: white;
+    cursor: pointer;
+    /* position: absolute; 
+    right: 3rem;  */
+}
+.header {
+    background-color: orange;
+    padding: 5px 30px;
+    display: flex;
+    justify-content: flex-end;
+    z-index: 2;
+    position: relative;
+}
+
+.logout {
+    transform: translate(0, -100%);
+    transition: transform 0.5s ease-out;
+    max-width: 100px;
+    margin: auto;
+    padding: 10px 30px;
+    z-index: 1;
+    position: absolute;
+    background-color: orange;
+    right: 30px;
+    color: white;
+    cursor: pointer;
+    border-radius: 0 0 5px 5px;
+}
+.header:has(input:checked) + .logout {
+    transform: translate(0, 0);
+}
