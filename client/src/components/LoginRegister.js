@@ -4,6 +4,7 @@ import {useDispatch} from 'react-redux';
 import { Link, useNavigate } from "react-router-dom";
 import { setToken, setAdmin, setUserId, setPlayerLevel } from "../actions";
 import {FormControl,FormControlLabel, RadioGroup, Radio, FormLabel, Button, TextField, Box } from '@mui/material';
+import './Login.css'
 
 export const LoginRegister = ({title}) => {
     const [msg, setMsg] = useState('');
